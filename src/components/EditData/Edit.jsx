@@ -1,14 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CrudOpration } from "../slicer/Cruddopration";
 import { ListSlice } from "../slicer/ListSlice";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function Edit() {
   const dispatch = useDispatch();
-  let [name,setname]=useState('')
-  let [ID,setID]=useState()
+  let [name, setname] = useState("");
+  let [ID, setID] = useState();
   const { id } = useParams();
   console.log(id);
   const Editdata = useSelector((state) => {
@@ -17,22 +16,18 @@ export default function Edit() {
   console.log(Editdata);
   let existing = Editdata.filter((f) => f.id === id);
   existing = existing[0];
-  console.log("exisiting", existing);
-  // console.log("name",Editdata.name);
-  // console.log("id",Editdata.id);
+
+  useEffect(() => {
+    setname(existing.name);
+    setID(existing.id);
+  }, [Editdata]);
 
   let history = useNavigate();
 
   const handelsubmit = (e) => {
     e.preventDefault();
-    // console.log(e.target.value);
-    console.log(name);
-    console.log(ID)
-    dispatch(ListSlice.actions.updatename({name,ID,id}));
+    dispatch(ListSlice.actions.updatename({ name, id }));
     history("/");
-    // dispatch(ListSlice.actions.AddList(Name));
-    // dispatch(ListSlice.actions.AddList(id));
-    // dispatch(ListSlice.actions.AddList({ Name, id: idd }));
   };
   return (
     <div>
@@ -42,18 +37,18 @@ export default function Edit() {
           <label>Id : </label>
           <input
             type="number"
-            placeholder={existing.id}
-            value={ID}
-            onChange={(e)=>{setID(e.target.value)}}
+            value={id}
+            onChange={(e) => {
+              setID(e.target.value);
+            }}
           />
           <br />
           <label>Name : </label>
           <input
             type="text"
-            placeholder={existing.name}
             value={name}
             onChange={(e) => {
-              setname(e.target.value );
+              setname(e.target.value);
             }}
           />
           <div>

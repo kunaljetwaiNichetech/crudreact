@@ -23,6 +23,8 @@ export default function Formadd() {
   );
 
   const handelsubmit = (e) => {
+
+    
     e.preventDefault();
     console.log(Name);
     console.log(id);
