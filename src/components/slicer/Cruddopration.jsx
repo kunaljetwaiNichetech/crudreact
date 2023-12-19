@@ -11,9 +11,7 @@ const CrudOpration = createSlice({
       state.id = action.payload.id;
       state.Name = action.payload.Name;
     },
-    updatename(state,action){
-        
-    }
+   
   },
 });
 

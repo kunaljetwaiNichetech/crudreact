@@ -18,8 +18,7 @@ export default function Display2() {
     // dispatch({ type: "ListSlice.List", payload: "21212121" });
 
     // console.log(item);
-  };
-  const handeledit =(items)=>{
+
 
   }
   return (

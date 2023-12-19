@@ -25,8 +25,10 @@ export default function Edit() {
 
   const handelsubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    // console.log(Name);
+    // console.log(e.target.value);
+    console.log(name);
+    console.log(ID)
+    dispatch(ListSlice.actions.updatename({name,ID,id}));
     history("/");
     // dispatch(ListSlice.actions.AddList(Name));
     // dispatch(ListSlice.actions.AddList(id));
@@ -40,18 +42,18 @@ export default function Edit() {
           <label>Id : </label>
           <input
             type="number"
-            value={existing.id}
-            onChange={(e) => {
-              setID({ ...id, ID: e.target.value });
-            }}
+            placeholder={existing.id}
+            value={ID}
+            onChange={(e)=>{setID(e.target.value)}}
           />
           <br />
           <label>Name : </label>
           <input
             type="text"
-            value={existing.name}
+            placeholder={existing.name}
+            value={name}
             onChange={(e) => {
-              setname({ ...name, name: e.target.value });
+              setname(e.target.value );
             }}
           />
           <div>
