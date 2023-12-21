@@ -9,9 +9,6 @@ const store =configureStore({
         List:ListSlice.reducer
     }
 })
-
-const inital =store.getState()
-console.log(inital)
 export {store} 
 
 
